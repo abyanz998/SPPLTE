@@ -17,7 +17,7 @@
       $_SESSION['level']       	= 'Siswa';
       $_SESSION['unit']        	= $r['unitSiswa'];
 
-      echo "<script>document.location='index-siswa.php?view=dashboard';</script>";
+      echo "<script>document.location='index-siswa.php?view=dashboard';</script>"; // ini koentcinya dia ngirim view bernilai dashboarddd
    }else{
       $_SESSION['notif'] = 'gagalLogin';
       echo "<script>window.location=('login-siswa.php')</script>";

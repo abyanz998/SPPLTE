@@ -1,4 +1,4 @@
-<?php 
+<?php
   session_start();
   error_reporting(0);
   include "config/koneksi.php";
@@ -14,18 +14,19 @@
   include 'config/user_agent.php';
 
 
+
   if (isset($_SESSION['idUsers'])){
-    //buat variabel idUsers 
+    //buat variabel idUsers
     $idUsers = $_SESSION['idUsers'];
     $idUnitUsers = $_SESSION['unit'];
 
     //ambil data penguna
     $idt_user = mysqli_fetch_array(mysqli_query($koneksi,"SELECT users.*, users_level.idUsersLevel, users_level.namaUsersLevel FROM users INNER JOIN users_level ON users.level = users_level.idUsersLevel WHERE idUsers='$idUsers'"));
-      
+
     //cek foto pengguna
     if ($idt_user['foto'] == ''){ $foto_user = $lokasi_default_fotoPengguna; }
     else { $foto_user = $lokasi_foto_pengguna.$idt_user['foto']; }
-    
+
     //ambil data identitas sistem
     $idt = mysqli_fetch_array(mysqli_query($koneksi,"SELECT * FROM identitas"));
     //ambil data tahun ajaran yang aktif
@@ -75,7 +76,7 @@
     <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.css">
 
     <style type="text/css"> .files{ position:absolute; z-index:2; top:0; left:0; filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; opacity:0; background-color:transparent; color:transparent; } </style>
-    
+
     <style>
       div.over {
         width: 720px;
@@ -89,12 +90,12 @@
     </style>
     <script type="text/javascript" src="plugins/jQuery/jquery-1.12.3.min.js"></script>
 
-    <script language="javascript" type="text/javascript"> 
+    <script language="javascript" type="text/javascript">
       var maxAmount = 160;
       function textCounter(textField, showCountField) {
         if (textField.value.length > maxAmount) {
           textField.value = textField.value.substring(0, maxAmount);
-        } else { 
+        } else {
           showCountField.value = maxAmount - textField.value.length;
         }
       }
@@ -135,7 +136,7 @@
       <aside class="main-sidebar">
         <?php include "menu-admin.php"; ?>
       </aside>
-	  
+
 	  <div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
@@ -155,7 +156,7 @@
 		</section>
 
 		<section class="content">
-      <?php 
+      <?php
         include 'config/koneksi.php';
           $menu = mysqli_query($koneksi,"SELECT * FROM menu");
           while($mnu=mysqli_fetch_array($menu)){
@@ -202,7 +203,7 @@
     <script src="plugins/highchart/js/highcharts.js"></script>
     <script src="plugins/highchart/js/modules/data.js"></script>
     <script src="plugins/highchart/js/modules/exporting.js"></script>
-    
+
     <script src="plugins/morris/morris.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -220,7 +221,7 @@
     <!-- jQuery Knob Chart -->
     <script src="plugins/knob/jquery.knob.js"></script>
     <!-- daterangepicker -->
-    
+
     <script src="plugins/daterangepicker/daterangepicker.js"></script>
     <script src="plugins/datetimepicker/bootstrap-datetimepicker.js"></script>
     <!-- datepicker -->
@@ -233,7 +234,7 @@
     <script src="plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/app.min.js"></script>
-	
+
     <script src="assets/js/script.js"></script>
     <script src="assets/app.js"></script>
 
@@ -241,7 +242,7 @@
     <!-- FullCalendar -->
     <script src="plugins/moment/moment.min.js"></script>
     <script src='plugins/fullcalendar/fullcalendar.min.js'></script>
-    
+
     <!-- KHUEUS COMBOBOX -->
     <script type="text/javascript">
       $(document).ready(function(){
@@ -726,7 +727,7 @@
             });
       });
 
-      //combo bertingkat unit dan akun biaya 
+      //combo bertingkat unit dan akun biaya
       $("#Cunit").change(function(){
           var idAkunBiaya = $("#idAkunBiaya").val();
           var idUnit = $("#Cunit").val();
@@ -741,7 +742,7 @@
             });
       });
 
-      //combo bertingkat unit dan akun biaya 
+      //combo bertingkat unit dan akun biaya
       $("#Cunit").change(function(){
           var idAkunBiaya = $("#idAkunBiaya").val();
           var idUnit = $("#Cunit").val();
@@ -850,7 +851,7 @@
                 }else{
                   var opt = "<option value='"+ val.id + "'>"+ val.name +" "+ val.thn_ganjil +"</option>";
                 }
-                
+
               }
               else{
                 if (bln_awal == val.id){
@@ -858,7 +859,7 @@
                 }else{
                   var opt = "<option value='"+ val.id + "'>"+ val.name +" "+ val.thn_genap +"</option>";
                 }
-                
+
               }
               no++;
               $('#bulan1').append(opt);
@@ -880,7 +881,7 @@
                     var opt = "<option value='"+ val.id + "'>"+ val.name +" "+ val.thn_ganjil +"</option>";
                   }
                 }
-                
+
               }
               else{
                 if (no < hasil_bln_awal){
@@ -963,7 +964,7 @@
   </script>
 
     <script type="text/javascript">
-  $(document).ready(function (){   
+  $(document).ready(function (){
    var table = $('#table_checkbox').DataTable({
       'columnDefs': [{
          'targets': 0,
@@ -971,7 +972,7 @@
          'orderable':false,
          'className': 'dt-body-center',
          'render': function (data, type, full, meta){
-             return '<input type="checkbox" name="id[]" value="' 
+             return '<input type="checkbox" name="id[]" value="'
                 + $('<div/>').text(data).html() + '">';
          }
       }],
@@ -992,13 +993,13 @@
          var el = $('#example-select-all').get(0);
          // If "Select all" control is checked and has 'indeterminate' property
          if(el && el.checked && ('indeterminate' in el)){
-            // Set visual state of "Select all" control 
+            // Set visual state of "Select all" control
             // as 'indeterminate'
             el.indeterminate = true;
          }
       }
    });
-    
+
    $('#frm-example').on('submit', function(e){
       var form = this;
 
@@ -1008,7 +1009,7 @@
          if(!$.contains(document, this)){
             // If checkbox is checked
             if(this.checked){
-               // Create a hidden element 
+               // Create a hidden element
                $(form).append(
                   $('<input>')
                      .attr('type', 'hidden')
@@ -1016,26 +1017,26 @@
                      .val(this.value)
                );
             }
-         } 
+         }
       });
 
       // FOR TESTING ONLY
-      
+
       // Output form data to a console
-      $('#example-console').text($(form).serialize()); 
-      console.log("Form submission", $(form).serialize()); 
-       
+      $('#example-console').text($(form).serialize());
+      console.log("Form submission", $(form).serialize());
+
       // Prevent actual form submission
       e.preventDefault();
    });
 });
 </script>
-            
-      
+
+
     <script>
       $('.textarea').wysihtml5();
 
-      $(function () { 
+      $(function () {
         //waktu plugin
         $('.jam').datetimepicker({
           format: 'hh:ii',
@@ -1142,7 +1143,7 @@
           "order": [[ 0, "asc" ]],
         });
       });
-	  
+
 		//$('.datepicker').datepicker();
 
     $('.datepicker').datepicker({
@@ -1155,14 +1156,14 @@
 			todayBtn:  1,
 			autoclose: 1
 		});
-	  
+
 		$(".harusAngka").keypress(function (e) {
 			//if the letter is not digit then display error and don't type anything
 			if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
 				   return false;
 			}
 		});
-		
+
     $("#parent").click(function() {
       $(".child").prop("checked", this.checked);
     });
@@ -1174,7 +1175,7 @@
           $('#parent').prop('checked', false);
         }
     });
-    
+
 		//hitung
 		/*
 		$('#hitungBayaran').keyup(function(){
@@ -1184,7 +1185,7 @@
 			}
 		});
 		*/
-		
+
 		$("#allTarif").keypress(function (e) {
 			var allTarif = $("#allTarif").val();
 			if (e.which == 13) {
@@ -1294,14 +1295,14 @@
     </script>
 
 
-   
-    
+
+
   </body>
 </html>
 
-<?php 
+<?php
   }else{
     include "portal.php";
-	
+
   }
 ?>

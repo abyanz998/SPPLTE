@@ -24,13 +24,13 @@
       </div><!-- /.box-body -->
     </div><!-- /.box -->
 
-    <?php if (isset($_GET['thn_ajar']) && isset($_GET['siswa'])) {
+    <?php
 
       $idTahunAjaran = $_GET['thn_ajar'];
       $siswa = $_GET['siswa'];
       $ta = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM tahun_ajaran WHERE idTahunAjaran='$idTahunAjaran'"));
       $dsiswa = mysqli_fetch_array(mysqli_query($koneksi, "SELECT siswa.*, unit_sekolah.*, kelas_siswa.nmKelas, kamar.namaKamar FROM siswa LEFT JOIN unit_sekolah ON siswa.unitSiswa=unit_sekolah.idUnit LEFT JOIN kelas_siswa ON siswa.kelasSiswa=kelas_siswa.idKelas LEFT JOIN kamar ON siswa.kamarSiswa=kamar.idKamar WHERE idSiswa='$siswa'"));
-      
+
     ?>
       <div class="row">
         <div class="col-md-6">
@@ -75,11 +75,11 @@
                     <td colspan="3"><br></td>
                   </tr>
                   <tr>
-                    <td colspan="3">
+                    <td colspan="1">
                       <div class="pull-right">
                         <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#listHistory"><i class="fa fa-list"></i> History Pembayaran</button>
                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#listKwitansi"><i class="fa fa-list"></i> Kwitansi Pembayaran</button>
-                        <a href="siswa/laporan/tagihan_pembayaran_persiswa.php?thn_ajar=<?= $_GET[thn_ajar] ?>&nis=<?= $dsiswa[nisSiswa] ?>" target="_blank"><button class="btn btn-danger btn-sm"><i class="fa fa-file-pdf-o"></i> Download Tagihan</button></a>
+                        <a href="siswa/laporan/tagihan_pembayaran_persiswa.php?thn_ajar=3&nis=26" target="_blank"><button class="btn btn-danger btn-sm"><i class="fa fa-file-pdf-o"></i> Download Tagihan</button></a>
                       </div>
 
                       <div class="modal fade in" id="listHistory" role="dialog">
@@ -104,15 +104,15 @@
                                     </thead>
                                     <tbody>
                                       <?php
-                                      $tampil_bulanan = mysqli_query($koneksi, "SELECT 
+                                      $tampil_bulanan = mysqli_query($koneksi, "SELECT
                                                                                       tagihan_bulanan.*,
-                                                                                      jenis_bayar.idPosBayar, 
+                                                                                      jenis_bayar.idPosBayar,
                                                                                       tahun_ajaran.nmTahunAjaran,
                                                                                       pos_bayar.nmPosBayar,
                                                                                       akun_biaya.keterangan,
                                                                                       unit_sekolah.singkatanUnit,
                                                                                       bulan.nmBulan
-                                                                                    FROM tagihan_bulanan 
+                                                                                    FROM tagihan_bulanan
                                                                                     LEFT JOIN jenis_bayar ON tagihan_bulanan.idJenisBayar = jenis_bayar.idJenisBayar
                                                                                     LEFT JOIN tahun_ajaran ON jenis_bayar.idTahunAjaran = tahun_ajaran.idTahunAjaran
                                                                                     LEFT JOIN pos_bayar ON jenis_bayar.idPosBayar = pos_bayar.idPosBayar
@@ -136,15 +136,15 @@
                                                 </tr>';
                                       }
 
-                                      $tampil_bebas = mysqli_query($koneksi, "SELECT 
-                                                                                tagihan_bebas.*, 
-                                                                                tagihan_bebas_bayar.*, 
-                                                                                jenis_bayar.idPosBayar, 
+                                      $tampil_bebas = mysqli_query($koneksi, "SELECT
+                                                                                tagihan_bebas.*,
+                                                                                tagihan_bebas_bayar.*,
+                                                                                jenis_bayar.idPosBayar,
                                                                                 tahun_ajaran.nmTahunAjaran,
                                                                                 pos_bayar.nmPosBayar,
                                                                                 akun_biaya.keterangan,
                                                                                 unit_sekolah.singkatanUnit
-                                                                              FROM tagihan_bebas 
+                                                                              FROM tagihan_bebas
                                                                               LEFT JOIN tagihan_bebas_bayar ON tagihan_bebas.idTagihanBebas = tagihan_bebas_bayar.idTagihanBebas
                                                                               LEFT JOIN jenis_bayar ON tagihan_bebas.idJenisBayar = jenis_bayar.idJenisBayar
                                                                               LEFT JOIN tahun_ajaran ON jenis_bayar.idTahunAjaran = tahun_ajaran.idTahunAjaran
@@ -197,14 +197,14 @@
                                     </thead>
                                     <tbody>
                                       <?php
-                                      $trx_pembayaran = mysqli_query($koneksi, "SELECT 
+                                      $trx_pembayaran = mysqli_query($koneksi, "SELECT
                                                 transaksi_pembayaran.*,
                                                 siswa.nisSiswa,
                                                 SUM(tagihan_bulanan.jumlahTagihan) as totalBulanan,
                                                 SUM(tagihan_bebas_bayar.jumlahBayar) as totalBebas,
                                                 tagihan_bulanan.tglBayar as tglBayarBulanan,
                                                 tagihan_bebas_bayar.tglBayar as tglBayarBebas
-                                             FROM transaksi_pembayaran 
+                                             FROM transaksi_pembayaran
                                              LEFT JOIN siswa ON transaksi_pembayaran.idSiswa = siswa.idSiswa
                                              LEFT JOIN tagihan_bulanan ON transaksi_pembayaran.noRefrensi = tagihan_bulanan.noRefrensi
                                              LEFT JOIN tagihan_bebas_bayar ON transaksi_pembayaran.noRefrensi = tagihan_bebas_bayar.noRefrensi
@@ -266,7 +266,7 @@
                 </thead>
 
                 <?php
-                $sqlListTGB = mysqli_query($koneksi, "SELECT 
+                $sqlListTGB = mysqli_query($koneksi, "SELECT
                                             tagihan_bulanan.*,
                                             sum(tagihan_bulanan.jumlahTagihan) as jmlTagihanBulanan,
                                             jenis_bayar.idPosBayar,
@@ -280,7 +280,7 @@
                                            INNER JOIN tahun_ajaran ON jenis_bayar.idTahunAjaran = tahun_ajaran.idTahunAjaran
                                            WHERE tagihan_bulanan.idSiswa='$dsiswa[idSiswa]' AND jenis_bayar.idTahunAjaran='$idTahunAjaran' GROUP BY tagihan_bulanan.idJenisBayar");
                 $no = 1;
-                
+
                 while ($rtgb = mysqli_fetch_array($sqlListTGB)) {
                   $dtgb = mysqli_fetch_array(mysqli_query($koneksi, "SELECT sum(jumlahTagihan) as jmlDibayar FROM tagihan_bulanan WHERE idJenisBayar=$rtgb[idJenisBayar] AND idSiswa=$rtgb[idSiswa] AND statusBayar='2'"));
                   if ($dtgb['jmlDibayar'] == 0) {
@@ -319,7 +319,7 @@
                                         </td>
                                       </tr>
                                       <tr>
-                                        <th>No.</th> 
+                                        <th>No.</th>
                                         <th>Bulan</th>
                                         <th>Tahun</th>
                                         <th>Tagihan</th>
@@ -329,8 +329,8 @@
                   $no = 1;
                   $base = $_SERVER['REQUEST_URI'];
                   $sqltbDetail = mysqli_query($koneksi, "SELECT tagihan_bulanan.*, bulan.nmBulan FROM tagihan_bulanan LEFT JOIN bulan ON tagihan_bulanan.idBulan=bulan.idBulan WHERE idJenisBayar='$rtgb[idJenisBayar]' AND idSiswa='$dsiswa[idSiswa]' ORDER BY bulan.urutan ASC");
-                  
-                  
+
+
                   while ($tb = mysqli_fetch_array($sqltbDetail)) {
                     $pisah_TA = explode('/', $ta['nmTahunAjaran']);
                     if ($r['urutan'] <= 6) {
@@ -371,8 +371,8 @@
                   <br>
                   <button type="submit" class="btn btn-success bay" style="float:right">Pay</button>
               </form>
-              
-              
+
+
             </div>
           </div>
 
@@ -448,8 +448,8 @@
                             <td>" . buatRp($rtb['totalTagihan']) . "</td>
                             <td>" . buatRp($dtBayar['totalDibayar']) . "</td>
                             <td>" . buatRp($rtb['totalTagihan'] - $dtBayar['totalDibayar']) . "</td>
-                            <td>$status</td>      
-                            <td>$pa</td>      
+                            <td>$status</td>
+                            <td>$pa</td>
                           </tr>";
                   }
                   ?>
@@ -460,13 +460,13 @@
                        <input type="hidden" value="<?= $dsiswa['idUnit'] ?>" name="unit" id="unit">
                   <br><button type="submit" class="btn btn-success" style="float:right">Pay</button>
               </form>
-              
+
             </div>
           </div>
         </div>
       </div>
       <!-- /.box-body -->
-    <?php } ?>
+    <?php  ?>
 
   </div>
 
@@ -535,14 +535,14 @@
     });
 
   });
-  
-  
 
-  
+
+
+
   function checkTotal() {
       var sum = 0;
       var n = $('input[name="items[]"]:checked');
-      
+
          for (i = 0; i < n.length; i++) {
             if (n[i].checked) {
             sum += parseInt(n[i].value);
@@ -555,7 +555,7 @@
   function checkTot() {
       var sum = 0;
       var n = $('input[name="item[]"]:checked');
-      
+
          for (i = 0; i < n.length; i++) {
             if (n[i].checked) {
             sum += parseInt(n[i].value);
@@ -570,8 +570,8 @@
   e.preventDefault();
   var n = $("#total").val();
   var formData = new FormData($("#form")[0]);
-  
-  
+
+
   if(n != 0)
   {
        $.ajax({
@@ -582,23 +582,23 @@
             contentType: false,
             processData: false,
             success: function (data) {
-                
+
                 console.log('token = ' + data);
-        
+
                 var resultType = document.getElementById('result-type');
                 var resultData = document.getElementById('result-data');
-        
+
                 function changeResult(type, data) {
-        
+
                   // location.reload();
                   $("#result-type").val(type);
                   $("#result-data").val(JSON.stringify(data));
                   resultType.innerHTML = type;
                   resultData.innerHTML = JSON.stringify(data);
                 }
-        
+
                 snap.pay(data, {
-        
+
                   onSuccess: function(result) {
                     changeResult('success', result);
                     console.log(result.status_message);
@@ -618,7 +618,7 @@
                 });
             }
           });
-      
+
   }
   else
   {
@@ -632,8 +632,8 @@
   e.preventDefault();
   var n = $("#tot").val();
   var formData = new FormData($("#frm")[0]);
-  
-  
+
+
   if(n != 0)
   {
        $.ajax({
@@ -644,23 +644,23 @@
             contentType: false,
             processData: false,
             success: function (data) {
-                
+
                 console.log('token = ' + data);
-        
+
                 var resultType = document.getElementById('result-type');
                 var resultData = document.getElementById('result-data');
-        
+
                 function changeResult(type, data) {
-        
+
                   // location.reload();
                   $("#result-type").val(type);
                   $("#result-data").val(JSON.stringify(data));
                   resultType.innerHTML = type;
                   resultData.innerHTML = JSON.stringify(data);
                 }
-        
+
                 snap.pay(data, {
-        
+
                   onSuccess: function(result) {
                     changeResult('success', result);
                     console.log(result.status_message);
@@ -680,7 +680,7 @@
                 });
             }
           });
-      
+
   }
   else
   {
@@ -689,6 +689,6 @@
 
 });
 
-  
-  
+
+
 </script>

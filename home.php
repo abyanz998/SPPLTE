@@ -6,6 +6,7 @@
   include "config/fungsi_seo.php";
   include "config/fungsi_thumb.php";
   include "config/variabel_default.php";
+  include 'apk_login_siswa.php';
   session_start();
   error_reporting(0);
   $idt = mysqli_fetch_array(mysqli_query($koneksi,"SELECT * FROM identitas "));
@@ -49,12 +50,12 @@
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <style type="text/css"> .files{ position:absolute; z-index:2; top:0; left:0; filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; opacity:0; background-color:transparent; color:transparent; } </style>
     <script type="text/javascript" src="plugins/jQuery/jquery-1.12.3.min.js"></script>
-    <script language="javascript" type="text/javascript"> 
+    <script language="javascript" type="text/javascript">
       var maxAmount = 160;
       function textCounter(textField, showCountField) {
         if (textField.value.length > maxAmount) {
           textField.value = textField.value.substring(0, maxAmount);
-        } else { 
+        } else {
           showCountField.value = maxAmount - textField.value.length;
         }
       }
@@ -99,7 +100,7 @@
     <script src="plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/app.min.js"></script>
-	
+
     <script src="assets/js/script.js"></script>
     <script src="assets/app.js"></script>
 
@@ -108,14 +109,14 @@
     <script>
       $('.textarea').wysihtml5();
 
-      $(function () { 
+      $(function () {
 		    // datepicker plugin
         $('.date-picker').datepicker({
           autoclose: true,
           todayHighlight: true,
           format: 'yyyy-mm-dd'
         });
-		
+
         $("#example1").DataTable();
         $('#example2').DataTable({
           "paging": true,
@@ -156,7 +157,7 @@
           "order": [[ 5, "desc" ]]
         });
       });
-	  
+
 		//$('.datepicker').datepicker();
 
     $('.datepicker').datepicker({
@@ -169,14 +170,14 @@
 			todayBtn:  1,
 			autoclose: 1
 		});
-	  
+
 		$(".harusAngka").keypress(function (e) {
 			//if the letter is not digit then display error and don't type anything
 			if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
 				   return false;
 			}
 		});
-		
+
     $("#parent").click(function() {
       $(".child").prop("checked", this.checked);
     });
@@ -188,7 +189,7 @@
           $('#parent').prop('checked', false);
         }
     });
-    
+
 		//hitung
 		/*
 		$('#hitungBayaran').keyup(function(){
@@ -198,7 +199,7 @@
 			}
 		});
 		*/
-		
+
 		$("#allTarif").keypress(function (e) {
 			var allTarif = $("#allTarif").val();
 			if (e.which == 13) {
@@ -231,7 +232,7 @@
 
 	<nav class="navbar navbar-default fixed">
 		<div class="navbar-header">
-			<div class="row text-left"> 
+			<div class="row text-left">
 				<div class="col-md-3">
 					<a class="navbar-brand" href="#">
 						<img src="<?= $lokasi_penyimpanan_logo.$idt['logo_kiri'] ?>" style="height: 40px; margin-top: -10px;" class="pull-left">
@@ -248,7 +249,7 @@
 	</nav>
 
 	<section class="content">
-  		<div class="row"> 
+  		<div class="row">
     		<div class="col-md-12">
       			<div class="box box-success box-solid" style="border: 1px solid #2ABB9B !important;">
         			<div class="box-header backg with-border">
@@ -256,7 +257,7 @@
         			</div><!-- /.box-header -->
         			<div class="box-body">
           				<form action="" class="form-horizontal" method="get" accept-charset="utf-8">
-          					<div class="form-group">            
+          					<div class="form-group">
           						<label for="" class="col-sm-2 control-label">Tahun Ajaran</label>
           						<div class="col-sm-2">
             						<input type="hidden" id="idTahunAjaran" value="<?= $_GET[thn_ajar] ?>">
@@ -287,17 +288,17 @@
 			            }
 			        });
     			</script>
-    	
+
     			<?php if (isset($_GET['thn_ajar']) && isset($_GET['nis'])){
 
     				$idTahunAjaran = $_GET['thn_ajar'];
     				$nis = $_GET['nis'];
 
     				$ta= mysqli_fetch_array(mysqli_query($koneksi,"SELECT * FROM tahun_ajaran WHERE idTahunAjaran='$idTahunAjaran'"));
-    				$siswa= mysqli_fetch_array(mysqli_query($koneksi,"SELECT siswa.*, 
-    																		kelas_siswa.nmKelas, 
-    																		kamar.namaKamar 
-    																  FROM siswa 
+    				$siswa= mysqli_fetch_array(mysqli_query($koneksi,"SELECT siswa.*,
+    																		kelas_siswa.nmKelas,
+    																		kamar.namaKamar
+    																  FROM siswa
     																  LEFT JOIN kelas_siswa ON siswa.kelasSiswa=kelas_siswa.idKelas
     																  LEFT JOIN kamar ON siswa.kamarSiswa=kamar.idKamar
     																  WHERE nisSiswa='$nis'"));
@@ -315,36 +316,36 @@
               								<tr>
                   							<td width="200">Tahun Ajaran</td>
                   							<td width="4">:</td>
-                                <td><strong><?= $ta['nmTahunAjaran'] ?></strong></td> 
+                                <td><strong><?= $ta['nmTahunAjaran'] ?></strong></td>
                           		</tr>
                           		<tr>
                                 <td>NIS</td>
                                 <td>:</td>
-                          			<td><?= $siswa['nisSiswa'] ?></td> 
+                          			<td><?= $siswa['nisSiswa'] ?></td>
                           		</tr>
                           		<tr>
                                 <td>Nama Santri</td>
                                 <td>:</td>
-							                  <td><?= $siswa['nmSiswa'] ?></td> 
+							                  <td><?= $siswa['nmSiswa'] ?></td>
                               </tr>
                               <tr>
                                 <td>Kelas</td>
                                 <td>:</td>
-                                <td><?= $siswa['nmKelas'] ?></td> 
+                                <td><?= $siswa['nmKelas'] ?></td>
                               </tr>
                               <tr>
 							                    <td>Kamar</td>
 							                    <td>:</td>
-							                    <td><?= $siswa['namaKamar'] ?></td> 
+							                    <td><?= $siswa['namaKamar'] ?></td>
 							                </tr>
                 						</tbody>
               						</table>
             					</div>
           					</div>
         				</div>
-        				
+
         				<div class="col-md-6">
-          					<!-- List Tagihan Bulanan --> 
+          					<!-- List Tagihan Bulanan -->
           					<div class="box box-success box-solid" style="border: 1px solid #2ABB9B !important;">
             					<div class="box-header backg with-border">
               						<h3 class="box-title">Tagihan Bulanan</h3>
@@ -361,9 +362,9 @@
 						                    	<th>Status</th>
 						                  	</tr>
 						                </thead>
-						              
+
 						                	<?php
-												$sqlListTGB = mysqli_query($koneksi,"SELECT 
+												$sqlListTGB = mysqli_query($koneksi,"SELECT
 																						tagihan_bulanan.*,
 																						sum(tagihan_bulanan.jumlahTagihan) as jmlTagihanBulanan,
 																						jenis_bayar.idPosBayar,
@@ -415,7 +416,7 @@
 															  				</td>
 															  			</tr>
 															  			<tr>
-																  			<th>No.</th> 
+																  			<th>No.</th>
 														            <th>Bulan</th>
 														            <th>Tahun</th>
 												                <th>Tagihan</th>
@@ -448,7 +449,7 @@
 														    echo '</tbody>';
 													}
 													?>
-						                
+
                               		</table>
           						</div>
         					</div>
@@ -486,10 +487,10 @@
         										$no=1;
 												while($rtb=mysqli_fetch_array($sqlTagihanBebas)){
 													$dtBayar=mysqli_fetch_array(mysqli_query($koneksi, "SELECT sum(jumlahBayar) as totalDibayar FROM tagihan_bebas_bayar WHERE idTagihanBebas='$rtb[idTagihanBebas]'"));
-													
+
 													$sisa=$dtInfo['totalTagihan']-$totalDibayar['totalDibayar'];
 													$sisaRp=buatRp($sisa);
-													
+
 													if($rtb['statusBayar']=='0'){
 														$status="<label class='label label-danger'>Belum Bayar</label>";
 														$icon="fa-plus";
@@ -518,12 +519,12 @@
 														<td>".buatRp($rtb['totalTagihan'])."</td>
 														<td>".buatRp($dtBayar['totalDibayar'])."</td>
 														<td>".buatRp($rtb['totalTagihan']-$dtBayar['totalDibayar'])."</td>
-														<td>$status</td>			
+														<td>$status</td>
 													</tr>";
 												}
         									?>
         								</tbody>
-        							</table> 
+        							</table>
         						</div>
                   			</div>
       					</div>

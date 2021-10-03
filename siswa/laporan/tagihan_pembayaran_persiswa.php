@@ -20,16 +20,16 @@
         if (empty($_GET['bulan1']) && empty($_GET['bulan2'])){
             $bulan_aktif = (int)date('m') + 6;
 
-            $tampil_bulanan = mysqli_query($koneksi,"SELECT 
+            $tampil_bulanan = mysqli_query($koneksi,"SELECT
                                                         tagihan_bulanan.*,
-                                                        jenis_bayar.idPosBayar, 
+                                                        jenis_bayar.idPosBayar,
                                                         tahun_ajaran.nmTahunAjaran,
                                                         pos_bayar.nmPosBayar,
                                                         akun_biaya.keterangan,
                                                         unit_sekolah.singkatanUnit,
                                                         bulan.nmBulan,
                                                         bulan.urutan
-                                                    FROM tagihan_bulanan 
+                                                    FROM tagihan_bulanan
                                                     LEFT JOIN jenis_bayar ON tagihan_bulanan.idJenisBayar = jenis_bayar.idJenisBayar
                                                     LEFT JOIN tahun_ajaran ON jenis_bayar.idTahunAjaran = tahun_ajaran.idTahunAjaran
                                                     LEFT JOIN pos_bayar ON jenis_bayar.idPosBayar = pos_bayar.idPosBayar
@@ -38,29 +38,29 @@
                                                     LEFT JOIN bulan ON tagihan_bulanan.idBulan = bulan.idBulan
                                                     WHERE tagihan_bulanan.idSiswa='$siswa[idSiswa]' AND jenis_bayar.idTahunAjaran='$_GET[thn_ajar]' AND tagihan_bulanan.statusBayar='0' AND bulan.urutan <= '$bulan_aktif' ORDER BY tagihan_bulanan.idTagihanBulanan DESC");
 
-            $tampil_bebas = mysqli_query($koneksi, "SELECT 
-                                                        tagihan_bebas.*, 
-                                                        SUM(tagihan_bebas.totalTagihan) as totalTagihanBebas, 
-                                                        jenis_bayar.idPosBayar, 
+            $tampil_bebas = mysqli_query($koneksi, "SELECT
+                                                        tagihan_bebas.*,
+                                                        SUM(tagihan_bebas.totalTagihan) as totalTagihanBebas,
+                                                        jenis_bayar.idPosBayar,
                                                         tahun_ajaran.nmTahunAjaran,
                                                         pos_bayar.nmPosBayar
-                                                    FROM tagihan_bebas 
+                                                    FROM tagihan_bebas
                                                     LEFT JOIN jenis_bayar ON tagihan_bebas.idJenisBayar = jenis_bayar.idJenisBayar
                                                     LEFT JOIN tahun_ajaran ON jenis_bayar.idTahunAjaran = tahun_ajaran.idTahunAjaran
                                                     LEFT JOIN pos_bayar ON jenis_bayar.idPosBayar = pos_bayar.idPosBayar
                                                     WHERE tagihan_bebas.idSiswa='$siswa[idSiswa]' AND jenis_bayar.idTahunAjaran='$_GET[thn_ajar]' AND tagihan_bebas.statusBayar!='1'
-                                                    GROUP BY tagihan_bebas.idJenisBayar");   
+                                                    GROUP BY tagihan_bebas.idJenisBayar");
         }else{
-            $tampil_bulanan = mysqli_query($koneksi,"SELECT 
+            $tampil_bulanan = mysqli_query($koneksi,"SELECT
                                                         tagihan_bulanan.*,
-                                                        jenis_bayar.idPosBayar, 
+                                                        jenis_bayar.idPosBayar,
                                                         tahun_ajaran.nmTahunAjaran,
                                                         pos_bayar.nmPosBayar,
                                                         akun_biaya.keterangan,
                                                         unit_sekolah.singkatanUnit,
                                                         bulan.nmBulan,
                                                         bulan.urutan
-                                                    FROM tagihan_bulanan 
+                                                    FROM tagihan_bulanan
                                                     LEFT JOIN jenis_bayar ON tagihan_bulanan.idJenisBayar = jenis_bayar.idJenisBayar
                                                     LEFT JOIN tahun_ajaran ON jenis_bayar.idTahunAjaran = tahun_ajaran.idTahunAjaran
                                                     LEFT JOIN pos_bayar ON jenis_bayar.idPosBayar = pos_bayar.idPosBayar
@@ -69,20 +69,20 @@
                                                     LEFT JOIN bulan ON tagihan_bulanan.idBulan = bulan.idBulan
                                                     WHERE tagihan_bulanan.idSiswa='$siswa[idSiswa]' AND jenis_bayar.idTahunAjaran='$_GET[thn_ajar]' AND tagihan_bulanan.statusBayar='0' AND bulan.urutan >= '$_GET[bulan1]' AND bulan.urutan <= '$_GET[bulan2]' ORDER BY tagihan_bulanan.idTagihanBulanan DESC");
 
-            $tampil_bebas = mysqli_query($koneksi, "SELECT 
-                                                        tagihan_bebas.*, 
-                                                        SUM(tagihan_bebas.totalTagihan) as totalTagihanBebas, 
-                                                        jenis_bayar.idPosBayar, 
+            $tampil_bebas = mysqli_query($koneksi, "SELECT
+                                                        tagihan_bebas.*,
+                                                        SUM(tagihan_bebas.totalTagihan) as totalTagihanBebas,
+                                                        jenis_bayar.idPosBayar,
                                                         tahun_ajaran.nmTahunAjaran,
                                                         pos_bayar.nmPosBayar
-                                                    FROM tagihan_bebas 
+                                                    FROM tagihan_bebas
                                                     LEFT JOIN jenis_bayar ON tagihan_bebas.idJenisBayar = jenis_bayar.idJenisBayar
                                                     LEFT JOIN tahun_ajaran ON jenis_bayar.idTahunAjaran = tahun_ajaran.idTahunAjaran
                                                     LEFT JOIN pos_bayar ON jenis_bayar.idPosBayar = pos_bayar.idPosBayar
                                                     WHERE tagihan_bebas.idSiswa='$siswa[idSiswa]' AND jenis_bayar.idTahunAjaran='$_GET[thn_ajar]' AND tagihan_bebas.statusBayar!='1'
-                                                    GROUP BY tagihan_bebas.idJenisBayar"); 
+                                                    GROUP BY tagihan_bebas.idJenisBayar");
         }
-        
+
 
 
         //konfigurasi TCPDF
@@ -106,7 +106,7 @@
                     <tr>
                         <td><hr style="height:2px"></td>
                     </tr>
-                    
+
                 </table><br>';
         $pdf->writeHTML($html,FALSE,FALSE,FALSE,'L');
 
@@ -257,10 +257,14 @@
 
                 </table>';
         $pdf->writeHTML($html,FALSE,FALSE,FALSE,'L');
+        // $siswa['nisSiswa'] = "201788775";
+        // $siswa['nmSiswa'] = "AA";
 
         $file = 'Tagihan Pembayaran Siswa NIS '.$siswa['nisSiswa'].' Nama '.$siswa['nmSiswa'].'.pdf';
         $nama_file    =str_replace(' ', '_', $file);
-        //hasil print
-        $pdf->Output($nama_file,'I');
+        //print langsung
+        ob_clean();
 
+        // $pdf->Output($_SERVER['DOCUMENT_ROOT'].'/spplte/download_apk/'.$nama_file,'F');   // untuk download APK lewat direktori tersebut
+        $pdf->Output($nama_file,'FD');
 ?>
