@@ -1,0 +1,38 @@
+[21-Apr-2021 22:00:54 Asia/Jakarta] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/sppm5318/public_html/login.php on line 3
+[22-Apr-2021 05:56:20 Asia/Jakarta] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/sppm5318/public_html/login.php on line 3
+[22-Apr-2021 08:41:05 Asia/Jakarta] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/sppm5318/public_html/login.php on line 3
+[22-Apr-2021 08:41:14 Asia/Jakarta] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/sppm5318/public_html/login.php on line 3
+[22-Apr-2021 08:41:23 Asia/Jakarta] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/sppm5318/public_html/login.php on line 3
+[22-Apr-2021 08:42:03 Asia/Jakarta] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/sppm5318/public_html/login.php on line 3
+[22-Apr-2021 09:54:24 Asia/Jakarta] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/sppm5318/public_html/login.php on line 3
+[22-Apr-2021 10:01:49 Asia/Jakarta] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/sppm5318/public_html/login-siswa.php on line 3
+[22-Apr-2021 10:02:07 Asia/Jakarta] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/sppm5318/public_html/login-siswa.php on line 3
+[22-Apr-2021 10:02:18 Asia/Jakarta] PHP Warning:  Use of undefined constant nmAplikasi - assumed 'nmAplikasi' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 41
+[22-Apr-2021 10:02:18 Asia/Jakarta] PHP Warning:  Use of undefined constant view - assumed 'view' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:18 Asia/Jakarta] PHP Warning:  Use of undefined constant viewMenu - assumed 'viewMenu' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:18 Asia/Jakarta] PHP Warning:  Use of undefined constant view - assumed 'view' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:18 Asia/Jakarta] PHP Warning:  Use of undefined constant viewMenu - assumed 'viewMenu' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:18 Asia/Jakarta] PHP Warning:  Use of undefined constant view - assumed 'view' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:18 Asia/Jakarta] PHP Warning:  Use of undefined constant viewMenu - assumed 'viewMenu' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:20 Asia/Jakarta] PHP Warning:  Use of undefined constant nmAplikasi - assumed 'nmAplikasi' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 41
+[22-Apr-2021 10:02:20 Asia/Jakarta] PHP Warning:  Use of undefined constant act - assumed 'act' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/siswa/master_pembayaran.php on line 3
+[22-Apr-2021 10:02:20 Asia/Jakarta] PHP Warning:  Use of undefined constant view - assumed 'view' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:20 Asia/Jakarta] PHP Warning:  Use of undefined constant viewMenu - assumed 'viewMenu' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:20 Asia/Jakarta] PHP Warning:  Use of undefined constant view - assumed 'view' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:20 Asia/Jakarta] PHP Warning:  Use of undefined constant viewMenu - assumed 'viewMenu' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:20 Asia/Jakarta] PHP Warning:  Use of undefined constant view - assumed 'view' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:20 Asia/Jakarta] PHP Warning:  Use of undefined constant viewMenu - assumed 'viewMenu' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Use of undefined constant nmAplikasi - assumed 'nmAplikasi' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 41
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Use of undefined constant act - assumed 'act' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/siswa/master_pembayaran.php on line 3
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Use of undefined constant thn_ajar - assumed 'thn_ajar' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/siswa/master_pembayaran.php on line 82
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Use of undefined constant nisSiswa - assumed 'nisSiswa' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/siswa/master_pembayaran.php on line 82
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Illegal string offset 'idSiswa' in /home/sppm5318/public_html/siswa/master_pembayaran.php on line 122
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Illegal string offset 'idSiswa' in /home/sppm5318/public_html/siswa/master_pembayaran.php on line 154
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Use of undefined constant nmPosBayar - assumed 'nmPosBayar' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/siswa/master_pembayaran.php on line 318
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Use of undefined constant nmTahunAjaran - assumed 'nmTahunAjaran' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/siswa/master_pembayaran.php on line 318
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Use of undefined constant view - assumed 'view' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Use of undefined constant viewMenu - assumed 'viewMenu' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Use of undefined constant view - assumed 'view' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Use of undefined constant viewMenu - assumed 'viewMenu' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Use of undefined constant view - assumed 'view' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
+[22-Apr-2021 10:02:24 Asia/Jakarta] PHP Warning:  Use of undefined constant viewMenu - assumed 'viewMenu' (this will throw an Error in a future version of PHP) in /home/sppm5318/public_html/index-siswa.php on line 208
